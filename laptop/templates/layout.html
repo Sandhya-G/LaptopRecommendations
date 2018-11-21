@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Laptop Specificatons</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='icon.jpg') }}">
+      <style>
+
+        .carousel slide
+        {
+        width:100% !important;
+
+        }
+      .carousel-inner{
+          width:100%;
+          height: 350px;
+        }
+        .form-control
+        {
+            background-color:transparent !important;
+
+        }
+
+        .item, img{
+            height: 100% !important;
+            width:  100% !important;
+
+        }
+
+
+       </style>
+
+
+    </head>
+    <>
+
+<div>
+    <nav class="navbar navbar-inverse navbar-fixed-top ">
+      <div class="container-fluid">
+
+        <ul class="nav navbar-nav">
+          <li><a class="nav-item nav-link" href="{{ url_for('home') }}" >Home</a></li>
+          <li><a class="nav-item nav-link" href="{{ url_for('insert') }}">Insert</a></li>
+
+              <li><a href="{{ url_for('Apps', id=1)}}">Gaming</a></li>
+              <li><a href="{{ url_for('Apps', id=2)}}">General</a></li>
+              <li><a href="{{ url_for('Apps', id=3)}}">Development</a></li>
+              <li><a href="{{ url_for('Apps', id=4)}}">Programming</a></li>
+              <li><a href="{{ url_for('Apps', id=5)}}">ML</a></li>
+              <li><a href="{{ url_for('Apps', id=6)}}">Design</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+        <form class="navbar-form navbar-left" action=" ">
+          <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Search by Brand" name="search">
+          </div>
+          <button class="btn btn-default" type="submit">
+           <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </form>
+        </ul>
+          <ul class="nav navbar-nav navbar-right">
+              {% if current_user.is_anonymous %}
+                <li><a href="{{ url_for('register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="{{ url_for('login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              {% else %}
+              <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+        {% endif %}
+    </ul>
+      </div>
+    </nav>
+</div>
+
+    <div class="row" style="margin:40px;text-align: center">
+            <div class="col-md-8">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+
+            </div>
+          </div>
+    <div>
+            {% block content %}{% endblock %}
+     </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </body>
+</html>

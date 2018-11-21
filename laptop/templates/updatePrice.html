@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+ {{ super() }}
+    <style>
+    body {
+       background-image: url("{{ url_for('static', filename='images/360_laptop.gif') }}");
+        background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;;
+    }
+    </style>
+<h2 style="margin-left:400px;padding:30px;">UPDATE PRICE</h2>
+<div class="panel panel-default" style="background:transparent; margin-left:350px; width:400px;" >
+         <div class="panel-body" style="padding:45px;">
+         <div class="content-section">
+        <form method="POST" action="" novalidate enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+             <fieldset class="form-group"  >
+                <div class="form-group">
+                    {{ form.price.label(class="form-control-label"  )  }}
+                    {% if form.price.errors %}
+                        {{ form.price(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.price.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    <br>
+                        {{ form.price(class="form-control form-control-lg",placeholder='eg: 50,000') }}
+
+                    {% endif %}
+                </div>
+             </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+
+        </form>
+         </div>
+    </div>
+    </div>
+
+{% endblock content %}

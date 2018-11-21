@@ -1,0 +1,459 @@
+{% extends "layout.html" %}
+{% block content %}
+    {{ super() }}
+    <style>
+    body {
+       background-image: url("{{ url_for('static', filename='images/2.jpg') }}");
+       background-repeat: no-repeat center center fixed;
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;;
+    }
+    </style>
+    <h1 style="margin-left:350px; padding:15px;">INSERT LAPTOP</h1>
+    <div class="panel panel-default" style="background:transparent; margin-left:300px; width:400px;" >
+         <div class="panel-body" style="padding:45px;">
+         <div class="content-section">
+      <div class="media">
+        <img src="{{ url_for('static', filename='laptopImages/default.jpg') }}" style="background:transparent;">
+        </div>
+        <form method="POST" action="" novalidate enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+             <div class="form-group">
+                    {{ form.picture.label() }}
+                    {{ form.picture(class="form-control-file") }}
+
+
+                    {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            <fieldset class="form-group"  >
+                <div class="form-group">
+                    {{ form.modelNo.label(class="form-control-label"  )  }}
+                    {% if form.modelNo.errors %}
+                        {{ form.modelNo(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.modelNo.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    <br>
+                        {{ form.modelNo(class="form-control form-control-lg",placeholder='eg: A515-51G-84ZP') }}
+
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.lapName.label(class="form-control-label") }}
+                    {% if form.lapName.errors %}
+                        {{ form.lapName(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lapName.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lapName(class="form-control form-control-lg",placeholder="eg :Acer Aspire 5")}}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.brandName.label(class="form-control-label") }}
+                    {% if form.brandName.errors %}
+                        {{ form.brandName(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.brandName.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.brandName(class="form-control form-control-lg",Placeholder='eg: Acer') }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.ops.label(class="form-control-label") }}
+                    {% if form.ops.errors %}
+                        {{ form.ops(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ops.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ops(class="form-control form-control-lg",Placeholder='eg: Windows 10 Home') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.rating.label(class="form-control-label") }}
+                    {% if form.rating.errors %}
+                        {{ form.rating(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.rating.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.rating(class="form-control form-control-lg",Placeholder='eg: 4.2') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.weight.label(class="form-control-label") }}
+                    {% if form.weight.errors %}
+                        {{ form.weight(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.weight.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.weight(class="form-control form-control-lg",Placeholder='3.2') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.dimen.label(class="form-control-label") }}
+                    {% if form.dimen.errors %}
+                        {{ form.dimen(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.dimen.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.dimen(class="form-control form-control-lg",Placeholder='381.51 x 262.89  x 21.59') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.warranty.label(class="form-control-label") }}
+                    {% if form.warranty.errors %}
+                        {{ form.warranty(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.warranty.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.warranty(class="form-control form-control-lg",Placeholder='eg: 1 year') }}
+                    {% endif %}
+                </div>
+
+
+
+                <div class="form-group">
+                    {{ form.price.label(class="form-control-label") }}
+                    {% if form.price.errors %}
+                        {{ form.price(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.price.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.price(class="form-control form-control-lg",Placeholder='eg: 50,000') }}
+                    {% endif %}
+                </div>
+                <br>
+                <h3>Processor</h3>
+                <br>
+                <div class="form-group">
+                    {{ form.processorName.label(class="form-control-label") }}
+                    {% if form.processorName.errors %}
+                        {{ form.processorName(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.processorName.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.processorName(class="form-control form-control-lg",Placeholder='eg: Intel Core') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.processorType.label(class="form-control-label") }}
+                    {% if form.processorType.errors %}
+                        {{ form.processorType(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.processorType.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.processorType(class="form-control form-control-lg",Placeholder='eg: i5') }}
+                    {% endif %}
+                </div>
+
+
+
+                 <div class="form-group">
+                    {{ form.speed.label(class="form-control-label") }}
+                    {% if form.speed.errors %}
+                        {{ form.speed(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.speed.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.speed(class="form-control form-control-lg",Placeholder='eg: 8550U (1.80 GHz)') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.cores.label(class="form-control-label") }}
+                    {% if form.cores.errors %}
+                        {{ form.cores(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cores.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cores(class="form-control form-control-lg",Placeholder='eg: Dual Core') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.gen.label(class="form-control-label") }}
+                    {% if form.gen.errors %}
+                        {{ form.gen(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.gen.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.gen(class="form-control form-control-lg",Placeholder='eg : 7') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.bit.label(class="form-control-label") }}
+                    {% if form.bit.errors %}
+                        {{ form.bit(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.bit.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.bit(class="form-control form-control-lg",Placeholder='eg: 64') }}
+                    {% endif %}
+                </div>
+
+
+                <br>
+                <h3>Memory</h3>
+                 <div class="form-group">
+                    {{ form.mType.label(class="form-control-label") }}
+                    {% if form.mType.errors %}
+                        {{ form.mType(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.mType.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.mType(class="form-control form-control-lg",Placeholder='eg: DDR4') }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.cap.label(class="form-control-label") }}
+                    {% if form.cap.errors %}
+                        {{ form.cap(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cap.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cap(class="form-control form-control-lg",Placeholder='eg: 1 TB') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.ssd.label(class="form-control-label") }}
+                    {% if form.ssd.errors %}
+                        {{ form.ssd(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ssd.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ssd(class="form-control form-control-lg",Placeholder='eg: 256 GB or No' )}}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.rpm.label(class="form-control-label") }}
+                    {% if form.rpm.errors %}
+                        {{ form.rpm(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.rpm.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.rpm(class="form-control form-control-lg",Placeholder='eg: 5400')}}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.ram.label(class="form-control-label") }}
+                    {% if form.ram.errors %}
+                        {{ form.ram(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ram.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ram(class="form-control form-control-lg",Placeholder='eg: 8 GB') }}
+                    {% endif %}
+                </div>
+                <br>
+                <h3>Graphics</h3>
+                <br>
+                 <div class="form-group">
+                    {{ form.graphicsName.label(class="form-control-label") }}
+                    {% if form.graphicsName.errors %}
+                        {{ form.graphicsName(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.graphicsName.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.graphicsName(class="form-control form-control-lg",Placeholder='eg: NVIDIA GeForce MX150') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.graphicsType.label(class="form-control-label") }}
+                    {% if form.graphicsType.errors %}
+                        {{ form.graphicsType(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.graphicsType.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.graphicsType(class="form-control form-control-lg",Placeholder='eg: Dedicated or Integrated') }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.graphicsCapacity.label(class="form-control-label") }}
+                    {% if form.graphicsCapacity.errors %}
+                        {{ form.graphicsCapacity(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.graphicsCapacity.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.graphicsCapacity(class="form-control form-control-lg",Placeholder='eg: 2 GB') }}
+                    {% endif %}
+                </div>
+
+                <h3>Battery</h3>
+
+                 <div class="form-group">
+                    {{ form.batteryLife.label(class="form-control-label") }}
+                    {% if form.batteryLife.errors %}
+                        {{ form.batteryLife(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.batteryLife.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.batteryLife(class="form-control form-control-lg",Placeholder='eg: 7 Hours' )}}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.batteryPower.label(class="form-control-label") }}
+                    {% if form.batteryPower.errors %}
+                        {{ form.batteryPower(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.batteryPower.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.batteryPower(class="form-control form-control-lg",Placeholder='30 mAh')}}
+                    {% endif %}
+                </div>
+
+
+                 <div class="form-group">
+                    {{ form.batteryCells.label(class="form-control-label") }}
+                    {% if form.batteryCells.errors %}
+                        {{ form.batteryCells(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.batteryCells.errors %}
+                                <span style="color:green">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.batteryCells(class="form-control form-control-lg",Placeholder='eg: 4') }}
+                    {% endif %}
+                </div>
+
+
+                 <br>
+                <h3>Applications</h3>
+                <br>
+                <div class="form-check">
+                    {{ form.Gaming(class="form-check-input") }}
+                    {{ form.Gaming.label(class="form-check-label") }}
+                </div>
+
+                <div class="form-check">
+                    {{ form.General(class="form-check-input") }}
+                    {{ form.General.label(class="form-check-label") }}
+                </div>
+
+                <div class="form-check">
+                    {{ form.WebDevelopment(class="form-check-input") }}
+                    {{ form.WebDevelopment.label(class="form-check-label") }}
+                </div>
+
+                <div class="form-check">
+                    {{ form.Programming(class="form-check-input") }}
+                    {{ form.Programming.label(class="form-check-label") }}
+                </div>
+
+                <div class="form-check">
+                    {{ form.ML(class="form-check-input") }}
+                    {{ form.ML.label(class="form-check-label") }}
+                </div>
+
+                <div class="form-check">
+                    {{ form.VR(class="form-check-input") }}
+                    {{ form.VR.label(class="form-check-label") }}
+                </div>
+
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+
+        </form>
+         </div>
+    </div>
+    </div>
+
+{% endblock content %}

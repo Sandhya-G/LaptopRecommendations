@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid" style="margin-top:200px;">
+    {% for lap in laps %}
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="/static/laptopImages/{{lap.image_file}}" class="img-responsive" style="width:100%" alt="Image">
+                <div style="text-align:center; font-weight: bold;font-size:20px"><h3>{{ lap.name}}</h3>
+                Rs/- {{lap.price}}
+
+                </div>
+
+
+
+            </div>
+            {% endfor %}
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div  class="panel panel-default" style="background:transparent;width:1000px;margin-left:140px;height:500px;">
+    <div class="panel-body">
+       <h1 style="text-align:center; font-family:Times New Roman, Times, serif;">{{lap.name  }} {{lap.model_id}} </h1>
+    <div class="row" style="padding:35px;"   >
+        <div class="col-sm-4">
+             <img src="/static/laptopImages/{{lap.image_file}}" alt="Image">
+           <div class="text-center">{{lap.name}}</div>
+            <div class="text-center" style="color:red;">Rs/- {{lap.price}}</div>
+        </div>
+
+    <div class="col-sm-8">
+        <ul>
+        <li><div> {{ lap.os }}  {{ lap.lapp.bit }} bit Operating System</div>
+            <li><div> {{ lap.lapp.gen }} Gen {{ lap.lapp.proName }} {{ lap.lapp.proType }}  {{ lap.lapp.noCores }} {{ lap.lapp.speed }} processor </div></li>
+            <li><div> {{ lap.lapm.capacity }} {{ lap.lapm.type }}</div></li>
+            <li><div>{{ lap.lapm.ram }} RAM</div></li>
+            <li><div>SSD: {{ lap.lapm.ssd }}</div></li>
+            <li><div>{{ lap.lapm.rpm }} RPM</div></li>
+
+            <li><div><b>Graphics</b>: {{ lap.lapg.gName }} {{ lap.lapg.Memory }}  {{ lap.lapg.gMemory }} {{ lap.lapg.gType }} </div></li>
+            <li><div><b>Battery</b>: {{ lap.lapb.cells }} Li cells    </div></li>
+            <li><div>{{ lap.lapb.power }}</div></li>
+            <li><div> {{ lap.lapb.life }}</div></li>
+            <li> <div>{{ lap.weight }} kg   </div></li>
+            <li> <div><b>resolution</b>: {{ lap.dimensions }}</div></li>
+            <li> <div> {{ lap.warranty }} </div></li>
+            <li> <div> {{ lap.ratings}} / 5</div></li>
+
+        </ul>
+
+        <div class="dropdown" style="margin-top:40px;">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+          Update  <span class="caret"></span>
+        </button>
+        <div class="dropdown-menu">
+            <li> <a class="dropdown-item" href="{{ url_for( 'updatePrice', lap_id=lap.model_id) }}">Price</a></li>
+            <li><a class="dropdown-item" href="{{ url_for( 'updateRatings', lap_id=lap.model_id) }}">Ratings</a></li>
+        </div>
+        <button type="button" class="btn btn-danger" onclick="window.location.href='{{ url_for( 'delete', lap_id=lap.model_id) }}';">
+            Delete   </button>
+      </div>
+        <div style="margin-top:50px; margin-left:40px;">
+            <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ url_for( 'home') }}';" >Back </button>
+      </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+    </div>
+
+    </div>
+</div>
+
+{% endblock content %}
