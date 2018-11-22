@@ -155,7 +155,7 @@ def login():
 def Display(lap_id):
     lap = LapMod.query.get_or_404(lap_id)
     laps = LapMod.query.all()
-    return render_template('display.html', lap=lap, laps=laps)
+    return render_template('display.html', lap=lap, name=lap.name ,laps=laps)
 
 @app.route("/updatePrice/<string:lap_id>",methods=['GET', 'POST'])
 def updatePrice(lap_id):

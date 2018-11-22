@@ -5,3 +5,4 @@
 /FLASK_APP=run.py
 *.pyc
 *.pyo
+/laptop/PY

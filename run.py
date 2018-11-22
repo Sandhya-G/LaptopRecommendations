@@ -4,6 +4,7 @@ from laptop.models import User, Applications, LapMod , Graphics, Processor, Memo
 if __name__ == '__main__':
     app.run(debug=True)
 
+#flask shell
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User, 'Applications': Applications,"LapMod":LapMod,  "Graphics":Graphics,

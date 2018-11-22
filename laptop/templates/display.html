@@ -58,15 +58,17 @@
 <br>
 <h3  style="margin-left:25px; font-family:Times New Roman, Times, serif;">Recommended Laptops for you</h3>
 {% for lap in laps %}
-            <div class="col-sm-2"  >
-                <div class="thumbnail" style="width:150px;height:100px;margin-bottom:100px;padding:20px; ">
+    {% if name != lap.name %}
+            <div class="col-sm-2"   >
+                <div class="thumbnail"  style="width:150px;height:100px;margin-bottom:100px;padding:20px; ">
                     <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="/static/laptopImages/{{lap.image_file}}"
-                                                                                  class="img-responsive"  alt="Image" ></a>
+                                                                                  class="img-responsive"   alt="Image"></a>
                     <br>
                     <div class="caption" style="text-align:center; font-weight: bold;font-size:12px">{{ lap.name}}
                     </div>
                 </div>
             </div>
+    {% endif %}
           {% endfor %}
 
 
