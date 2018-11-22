@@ -99,10 +99,10 @@ def insert():
             up = triggerInsert(userInsert=current_user.username, modelNo=lap.model_id)
             db.session.add(up)
             db.session.commit()
-            flash('Laptop price updated', 'info')
             return redirect(url_for('home'))
     except:
         db.session.rollback()
+        flash('error occured', 'danger')
     return render_template('insert.html', form=form)
 
 def save_picture(form_picture):
@@ -154,7 +154,8 @@ def login():
 @app.route("/Display/<string:lap_id>")
 def Display(lap_id):
     lap = LapMod.query.get_or_404(lap_id)
-    return render_template('display.html', lap=lap)
+    laps = LapMod.query.all()
+    return render_template('display.html', lap=lap, laps=laps)
 
 @app.route("/updatePrice/<string:lap_id>",methods=['GET', 'POST'])
 def updatePrice(lap_id):
@@ -220,7 +221,6 @@ def delete(lap_id, methods=['GET', 'POST']):
             db.session.commit()
         except:
             db.session.rollback()
-        flash('Laptop price updated', 'info')
         return redirect(url_for('home'))
     else:
         flash("Log in to delete",'info')

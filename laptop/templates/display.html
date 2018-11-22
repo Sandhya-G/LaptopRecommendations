@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div  class="panel panel-default" style="background:transparent;width:1000px;margin-left:140px;height:500px;">
+<div  class="panel panel-default" style="background:transparent;width:1000px;margin-left:140px;height:550px;">
     <div class="panel-body">
        <h1 style="text-align:center; font-family:Times New Roman, Times, serif;">{{lap.name  }} {{lap.model_id}} </h1>
-    <div class="row" style="padding:35px;"   >
+    <div class="row" style="padding:35px; margin-bottom:25px;width:1200px;height:700px;"   >
         <div class="col-sm-4">
              <img src="/static/laptopImages/{{lap.image_file}}" alt="Image">
            <div class="text-center">{{lap.name}}</div>
@@ -42,9 +42,7 @@
         <button type="button" class="btn btn-danger" onclick="window.location.href='{{ url_for( 'delete', lap_id=lap.model_id) }}';">
             Delete   </button>
       </div>
-        <div style="margin-top:50px; margin-left:40px;">
-            <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ url_for( 'home') }}';" >Back </button>
-      </div>
+
         </div>
 
     </div>
@@ -57,5 +55,20 @@
 
     </div>
 </div>
+<br>
+<h3  style="margin-left:25px; font-family:Times New Roman, Times, serif;">Recommended Laptops for you</h3>
+{% for lap in laps %}
+            <div class="col-sm-2"  >
+                <div class="thumbnail" style="width:150px;height:100px;margin-bottom:100px;padding:20px; ">
+                    <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="/static/laptopImages/{{lap.image_file}}"
+                                                                                  class="img-responsive"  alt="Image" ></a>
+                    <br>
+                    <div class="caption" style="text-align:center; font-weight: bold;font-size:12px">{{ lap.name}}
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+
+
 
 {% endblock content %}

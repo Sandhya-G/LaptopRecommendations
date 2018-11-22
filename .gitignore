@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+/PY
+/laptops.db
+/FLASK_APP=run.py
+*.pyc
+*.pyo

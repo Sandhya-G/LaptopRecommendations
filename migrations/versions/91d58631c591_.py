@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: bd7a8af0cc3f
+Revision ID: 91d58631c591
 Revises: 
-Create Date: 2018-11-13 07:58:32.377493
+Create Date: 2018-11-21 21:22:38.454015
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bd7a8af0cc3f'
+revision = '91d58631c591'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,13 +29,6 @@ def upgrade():
     sa.Column('power', sa.String(length=32), nullable=False),
     sa.Column('life', sa.String(length=32), nullable=False),
     sa.PrimaryKeyConstraint('b_id')
-    )
-    op.create_table('display',
-    sa.Column('d_id', sa.Integer(), nullable=False),
-    sa.Column('dstyle', sa.String(length=32), nullable=False),
-    sa.Column('dtype', sa.String(length=32), nullable=False),
-    sa.Column('resolution', sa.String(length=32), nullable=False),
-    sa.PrimaryKeyConstraint('d_id')
     )
     op.create_table('graphics',
     sa.Column('g_id', sa.Integer(), nullable=False),
@@ -105,9 +98,7 @@ def upgrade():
     sa.Column('memo_id', sa.Integer(), nullable=True),
     sa.Column('gid', sa.Integer(), nullable=True),
     sa.Column('bid', sa.Integer(), nullable=True),
-    sa.Column('did', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['bid'], ['battery.b_id'], ),
-    sa.ForeignKeyConstraint(['did'], ['display.d_id'], ),
     sa.ForeignKeyConstraint(['gid'], ['graphics.g_id'], ),
     sa.ForeignKeyConstraint(['memo_id'], ['memory.mem_id'], ),
     sa.ForeignKeyConstraint(['proc_id'], ['processor.pro_id'], ),
@@ -133,7 +124,6 @@ def downgrade():
     op.drop_table('processor')
     op.drop_table('memory')
     op.drop_table('graphics')
-    op.drop_table('display')
     op.drop_table('battery')
     op.drop_table('applications')
     # ### end Alembic commands ###

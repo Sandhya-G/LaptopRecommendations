@@ -1,17 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="container-fluid" style="margin-top:200px;">
+<div class="container-fluid" s>
     {% for lap in laps %}
-        <div class="row">
-            <div class="col-sm-4">
-                <img src="/static/laptopImages/{{lap.image_file}}" class="img-responsive" style="width:100%" alt="Image">
-                <div style="text-align:center; font-weight: bold;font-size:20px"><h3>{{ lap.name}}</h3>
-                Rs/- {{lap.price}}
-
+        <div class="row"style="margin-left:1px;">
+            <div class="col-sm-4"  >
+                <div class="thumbnail" style="width:350px;height:300px;margin-bottom:100px;padding:20px; ">
+                    <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="/static/laptopImages/{{lap.image_file}}"
+                           class="img-responsive"  alt="Image" >
+                    <div class="caption" style="text-align:center; font-weight: bold;font-size:20px"><p><h3>{{ lap.name}}</h3>
+                        Rs/- {{lap.price}}</p>
+                    </div></a>
                 </div>
-
-
-
             </div>
             {% endfor %}
 </div>

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<style>
+<style xmlns="http://www.w3.org/1999/html">
     .col-sm-4:hover {
     opacity: 0.5;
 }
@@ -66,23 +66,21 @@
 </div>
 
 
-<div class="container-fluid"  style="margin-top:110px;margin-bottom:50px;margin-left:15px;">
+<div class="container-fluid"  style="margin-top:110px;margin-bottom:60px;margin-left:15px;padding:20px;">
   <br>
-  <h3>Recommended</h3><br>
+  <h3 style="margin-left:25px; font-family:Times New Roman, Times, serif;">LAPTOPS</h3><br>
     {% for lap in laps %}
-        <div class="row">
-            <div class="col-sm-4" >
-                <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="static/laptopImages/{{lap.image_file}}"
-                           class="img-responsive"  alt="Image"></a>
-                <div style="text-align:center; font-weight: bold;font-size:20px"><h3>{{ lap.name}}</h3>
-                Rs/- {{lap.price}}
+        <div class="row"style="margin-left:0.01px;">
+            <div class="col-sm-4"  >
+                <div class="thumbnail" style="width:350px;height:300px;margin-bottom:100px;padding:20px; ">
+                    <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="static/laptopImages/{{lap.image_file}}"
+                           class="img-responsive"  alt="Image" >
+                    <div class="caption" style="text-align:center; font-weight: bold;font-size:20px"><p><h3>{{ lap.name}}</h3>
+                        Rs/- {{lap.price}}</p>
+                    </div></a>
                 </div>
-
-
-
             </div>
           {% endfor %}
-
         </div>
 
 </div>

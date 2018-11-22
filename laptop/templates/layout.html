@@ -6,33 +6,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
       <link rel="shortcut icon" href="{{ url_for('static', filename='icon.jpg') }}">
-      <style>
-
-        .carousel slide
-        {
-        width:100% !important;
-
-        }
-      .carousel-inner{
-          width:100%;
-          height: 350px;
-        }
-        .form-control
-        {
-            background-color:transparent !important;
-
-        }
-
-        .item, img{
-            height: 100% !important;
-            width:  100% !important;
-
-        }
-
-
-       </style>
-
-
     </head>
     <>
 
@@ -43,14 +16,13 @@
         <ul class="nav navbar-nav">
           <li><a class="nav-item nav-link" href="{{ url_for('home') }}" >Home</a></li>
           <li><a class="nav-item nav-link" href="{{ url_for('insert') }}">Insert</a></li>
-
-              <li><a href="{{ url_for('Apps', id=1)}}">Gaming</a></li>
-              <li><a href="{{ url_for('Apps', id=2)}}">General</a></li>
-              <li><a href="{{ url_for('Apps', id=3)}}">Development</a></li>
-              <li><a href="{{ url_for('Apps', id=4)}}">Programming</a></li>
-              <li><a href="{{ url_for('Apps', id=5)}}">ML</a></li>
-              <li><a href="{{ url_for('Apps', id=6)}}">Design</a></li>
-        </ul>
+          <li class="active"><a href="{{ url_for('Apps', id=1)}}">Gaming</a></li>
+          <li><a href="{{ url_for('Apps', id=2)}}">General</a></li>
+          <li><a href="{{ url_for('Apps', id=3)}}">Development</a></li>
+          <li ><a href="{{ url_for('Apps', id=4)}}">Programming</a></li>
+          <li><a href="{{ url_for('Apps', id=5)}}">ML</a></li>
+          <li><a href="{{ url_for('Apps', id=6)}}">Design</a></li>
+    </ul>
 
         <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left" action=" ">
