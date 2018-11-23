@@ -167,7 +167,8 @@ def login():
 @app.route("/Display/<string:lap_id>")
 def Display(lap_id):
     lap = LapMod.query.get_or_404(lap_id)
-    laps = LapMod.query.all()
+    laps = lap.hasapps.order_by(Applications.a_id.desc()).first()
+    laps = laps.apps.limit(6).all()
     return render_template('display.html', lap=lap, name=lap.name ,laps=laps)
 
 @app.route("/updatePrice/<string:lap_id>",methods=['GET', 'POST'])
@@ -215,7 +216,7 @@ def updateRatings(lap_id):
 @app.route("/Apps/<int:id>")
 def Apps(id):
     laps = Applications.query.filter_by(a_id=id).first()
-    laps = laps.apps.all()
+    laps = laps.apps.order_by(LapMod.price).all()
     return render_template('list.html', laps=laps)
 
 @app.route("/delete/<string:lap_id>")

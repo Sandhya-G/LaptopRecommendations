@@ -3,10 +3,11 @@
 {% block content %}
 <div  class="panel panel-default" style="background:transparent;width:1000px;margin-left:140px;height:550px;">
     <div class="panel-body">
-       <h1 style="text-align:center; font-family:Times New Roman, Times, serif;">{{lap.name  }} {{lap.model_id}} </h1>
+       <h1 style="text-align:center; font-family:Times New Roman, Times, serif;"> {{lap.model_id}} </h1>
     <div class="row" style="padding:35px; margin-bottom:25px;width:1200px;height:700px;"   >
-        <div class="col-sm-4">
-             <img src="/static/laptopImages/{{lap.image_file}}" alt="Image">
+        <div class="col-sm-4" style="width:350px;">
+             <img src="/static/laptopImages/{{lap.image_file}}"  alt="Image">
+            <br>
            <div class="text-center">{{lap.name}}</div>
             <div class="text-center" style="color:red;">Rs/- {{lap.price}}</div>
         </div>
