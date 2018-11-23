@@ -25,12 +25,12 @@
     </ul>
 
         <ul class="nav navbar-nav navbar-right">
-        <form class="navbar-form navbar-left" action=" ">
-          <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Search by Brand" name="search">
+        <form class="navbar-form navbar-left" action="{{ url_for('search')}}" method="post">
+          <div class="form-group" >
+            <input type="text" class="form-control"  placeholder="Search by Brand" name="search" value="{{request.form.search}}">
           </div>
           <button class="btn btn-default" type="submit">
-           <span class="glyphicon glyphicon-search"></span>
+           <span class="glyphicon glyphicon-search"  ></span>
           </button>
         </form>
         </ul>

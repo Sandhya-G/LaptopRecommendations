@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 import secrets,os
 from PIL import Image
 from laptop import app
@@ -16,6 +16,19 @@ def home():
     form = Insert()
     laps = LapMod.query.all()
     return render_template("main.html",laps=laps, form =form)
+
+@app.route("/search",  methods=['GET', 'POST'])
+def search():
+    brand = request.form['search']
+    brands = []
+    for b in db.session.query(LapMod.brand).distinct():
+        brands.append(b.brand)
+    laps = None
+    for b in brands:
+        if b.lower() == brand.lower():
+            laps = LapMod.query.filter_by(brand=b).all()
+    return render_template("list.html", laps=laps)
+
 
 @app.route("/insert", methods=['GET', 'POST'])
 @login_required

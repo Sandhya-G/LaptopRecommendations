@@ -1,18 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container-fluid" s>
-    {% for lap in laps %}
-        <div class="row"style="margin-left:1px;">
-            <div class="col-sm-4"  >
-                <div class="thumbnail" style="width:350px;height:300px;margin-bottom:100px;padding:20px; ">
-                    <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="/static/laptopImages/{{lap.image_file}}"
-                           class="img-responsive"  alt="Image" >
-                    <div class="caption" style="text-align:center; font-weight: bold;font-size:20px"><p><h3>{{ lap.name}}</h3>
-                        Rs/- {{lap.price}}</p>
-                    </div></a>
+    {% if laps is not none %}
+        {% for lap in laps %}
+            <div class="row"style="margin-left:1px;">
+                <div class="col-sm-4"  >
+                    <div class="thumbnail" style="width:350px;height:300px;margin-bottom:100px;padding:20px; ">
+                        <a href=" {{ url_for('Display', lap_id=lap.model_id) }}"><img src="/static/laptopImages/{{lap.image_file}}"
+                               class="img-responsive"  alt="Image" >
+                        <div class="caption" style="text-align:center; font-weight: bold;font-size:20px"><p><h3>{{ lap.name}}</h3>
+                            Rs/- {{lap.price}}</p>
+                        </div></a>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
+        {% else %}
+                <h1 style="text-align: center;">No such brand exists</h1>
+     {% endif %}
 </div>
 </div>
 {% endblock content %}
